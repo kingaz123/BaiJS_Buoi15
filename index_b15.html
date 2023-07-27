@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Quang_Bài tập JS buổi 15</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="w-50">
+      <h1 class="mt-2 mb-4">BÀI 1: Quản lý tuyển sinh</h1>
+      <form>
+        <div class="row">
+          <div class="form-group col-4">
+            <label class="font-weight-bold" for="mon1">Điểm môn 1</label>
+            <input type="number" class="form-control" id="mon1">
+          </div>
+          <div class="form-group col-4">
+            <label class="font-weight-bold" for="mon2">Điểm môn 2</label>
+            <input type="number" class="form-control" id="mon2">
+          </div>
+          <div class="form-group col-4">
+            <label class="font-weight-bold" for="mon3">Điểm môn 3</label>
+            <input type="number" class="form-control" id="mon3">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold" for="khuVuc">Khu vực</label>
+          <input type="text" class="form-control" id="khuVuc">
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold" for="doiTuong">Đối tượng</label>
+          <input type="number" min="0" max="4" class="form-control" id="doiTuong">
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold" for="diemChuan">Điểm chuẩn</label>
+          <input type="number" class="form-control" id="diemChuan">
+        </div>
+      </form>
+      <button type="button" class="btn btn-success mb-3" id="btnBai1">Kết quả thi</button>
+      <p id="ketQua1" class="alert alert-success mb-5"></p>
+      <hr class="mb-5">
+      <h1 class="mb-4">BÀI 2: Tính tiền điện</h1>
+      <form>
+        <div class="form-group">
+          <label class="font-weight-bold" for="tenKH">Tên khách hàng</label>
+          <input type="text" class="form-control" id="tenKH">
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold" for="dienSuDung">Số kw điện đã sử dụng</label>
+          <input type="number" class="form-control" id="dienSuDung">
+        </div>
+      </form>
+      <button type="button" class="btn btn-success mb-3" id="btnBai2">Tính tiền điện</button>
+      <p id="ketQua2" class="alert alert-success mb-5"></p>
+      <hr class="mb-5">
+      <h1 class="mb-4">BÀI 3: Tính thuế thu nhập cá nhân</h1>
+      <form>
+        <div class="form-group">
+          <label class="font-weight-bold" for="hoTen">Họ tên người chịu thuế</label>
+          <input type="text" class="form-control" id="hoTen">
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold" for="tongTn">Tổng thu nhập năm</label>
+          <input type="number" class="form-control" id="tongTn" min="0">
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold" for="soNguoi">Số người phụ thuộc</label>
+          <input type="number" class="form-control" id="soNguoi" min="0">
+        </div>
+      </form>
+      <button onclick=tinhThue() type="button" class="btn btn-success mb-3">Tính thuế</button>
+      <p id="ketQua3" class="alert alert-success mb-5"></p>
+      <hr class="mb-5">
+      <h1 class="mb-4">BÀI 4: Tính tiền cáp</h1>
+      <form>
+        <div class="form-group mb-4">
+          <label class="d-block font-weight-bold">Chọn loại khách hàng</label>
+          <div class="form-check form-check-inline mr-5">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="nhaDan" value="nd"
+              onclick=anHienKetNoi()>
+            <label class="form-check-label font-italic" for="nhaDan">Nhà dân</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="doanhNghiep" value="dn"
+              onclick=anHienKetNoi()>
+            <label class="form-check-label font-italic" for="doanhNghiep">Doanh nghiệp</label>
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <label class="font-weight-bold" for="maKh">Mã khách hàng</label>
+          <input type="text" class="form-control" id="maKh" min="0">
+        </div>
+        <div class="form-group mb-4">
+          <label class="font-weight-bold" for="soKenh">Số kênh cao cấp</label>
+          <input type="number" class="form-control" id="soKenh">
+        </div>
+        <div class="form-group mb-4" id="ketNoi" style="display: none">
+          <label class="font-weight-bold" for="soKetNoi">Số kết nối</label>
+          <input type="number" class="form-control" id="soKetNoi">
+        </div>
+      </form>
+      <button id="btnBai4" type="button" class="btn btn-success mb-3">Tính tiền</button>
+      <p id="ketQua4" class="alert alert-success mb-5"></p>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="./js/Bai1.js"></script>
+  <script src="./js/Bai2.js"></script>
+  <script src="./js/Bai3.js"></script>
+  <script src="./js/Bai4.js"></script>
+</body>
+
+</html>
